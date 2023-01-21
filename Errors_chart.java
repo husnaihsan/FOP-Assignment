@@ -6,7 +6,7 @@ package javafx_1;
 
 /**
  *
- * @author hp
+ * @author husnaihsan
  */
 // Java program to create a pie chart
 // with some specified data
