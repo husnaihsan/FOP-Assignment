@@ -21,5 +21,8 @@ public class Tester {
         JobSubmitted.displayJobSubmitted();
          System.out.println("");
          JobCancelled.displayJobCancelled();
+         System.out.println("");
+         ErrorType.displayErrorTypes();
+         System.out.println("");
     }
 }
