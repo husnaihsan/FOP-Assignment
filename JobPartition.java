@@ -73,16 +73,17 @@ public class JobPartition {
        
          System.out.println("\n");
             System.out.println("No. of jobs by partition: "+Partition);
-            System.out.println("+----------------------+--------------+");
-            System.out.println("|         Node         |  Num of Jobs |");
-            System.out.println("+----------------------+--------------+");
+            System.out.println("+-----+----------------------+--------------+");
+            System.out.println("| No. |        Node          | Num of Jobs  |");
+            System.out.println("+-----+----------------------+--------------+");
+           
             for(int j = 0; j<k;j++){
-                    System.out.printf("| %-20s | %7d      |\n",user[j],num[j]);
+                    System.out.printf("|  %2d.| %-20s | %7d      |\n",j+1,user[j],num[j]);
                     sum[i]+=num[j];
                 }
-            System.out.println("+----------------------+--------------+");
-            System.out.printf("|         Total        | %7d      |\n",sum[i]);
-            System.out.println("+----------------------+--------------+");
+            System.out.println("+-----+----------------------+--------------+");
+            System.out.printf("|     |         Total        | %7d      |\n",sum[i]);
+            System.out.println("+-----+----------------------+--------------+");
      }
 
     
