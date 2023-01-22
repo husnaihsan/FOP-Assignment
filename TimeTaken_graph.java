@@ -183,7 +183,11 @@ public class TimeTaken_graph extends Application {
                         System.out.printf("|       ms        |        %-10s      |\n",sum/(count+1));
                         System.out.printf("|  HH:mm:ss.SSS   |       %-10s     |\n",Convert(average));
                         System.out.println("+-----------------+------------------------+");
-                        Max(a);
+                        System.out.printf("|       Max       |                        |\n");
+                        System.out.println("+-----------------+------------------------+");
+                        System.out.printf("|       ms        |        %-10s      |\n",Max(a));
+                        System.out.printf("| DD:HH:mm:ss.SSS |      %-10s     |\n",Convert(Max(a)));
+                        System.out.println("+-----------------+------------------------+");
                         System.out.println("");
                       
              
@@ -213,13 +217,13 @@ public class TimeTaken_graph extends Application {
 		}
          return difference_In_Time;
    }
-   static void Max(long[] total){
+    static long Max(long[] total){
        long max = 0;
        for(int i = 0;i<total.length; i++){
        max = Math.max(max,total[i]);
        }
-       System.out.println("Maximum value: "+ Convert(max));
-   }
+       return max;}
+    
    static String Convert(long time){
        String result;
        long diffMiliSecond = time % 1000;

@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 public class JobCreatedEnded_graph extends Application {
     static int JuneStart= 0, JulyStart = 0, AugStart = 0, SeptStart = 0, OctStart = 0, NovStart = 0, DecStart = 0;
     static int June= 0, July = 0, Aug = 0, Sept = 0, Oct = 0, Nov = 0, Dec = 0;
+    //int m=0, n=0;
  
     @Override public void start(Stage stage) {
         stage.setTitle("Job Created and Completed ");
@@ -60,10 +61,11 @@ public class JobCreatedEnded_graph extends Application {
     }
  
     public static void main(String args[]) {
+        int m=0, n=0;
         try{
             String[] index=new String[50000], date = new String[50000], detail = new String[50000], det = new String[50000];
             Scanner input = new Scanner(new FileInputStream("C:\\Users\\hp\\Downloads\\extracted_log"));
-            int i=0, num=1, m=0;
+            int i=0;
             while(input.hasNextLine()){
                  String str = input.nextLine();
                 index[i]= str;
@@ -84,7 +86,7 @@ public class JobCreatedEnded_graph extends Application {
                     }
                 i++;
             }
-            int n =1;
+            
           for(int j=0; j<m; j++){
                 switch(date[j]){
                     case "06" -> JuneStart ++;
@@ -96,24 +98,7 @@ public class JobCreatedEnded_graph extends Application {
                     case "12" -> DecStart++;
                 }
             }
-            
-            System.out.println("    No. of jobs Created per month: ");
-                System.out.println("+------------------+-----------------------+");
-                System.out.println("|      Month       |      No. of Jobs      |");
-                System.out.println("+------------------+-----------------------+");
-                System.out.printf("|       June       |         %-10s    |\n",JuneStart);
-                System.out.printf("|       July       |         %-10s    |\n",JulyStart);
-                System.out.printf("|      August      |         %-10s    |\n",AugStart);
-                System.out.printf("|     September    |         %-10s    |\n",SeptStart);
-                System.out.printf("|      October     |         %-10s    |\n",OctStart);
-                System.out.printf("|     November     |         %-10s    |\n",NovStart);
-                System.out.printf("|     December     |         %-10s    |\n",DecStart);
-                System.out.println("+------------------+-----------------------+");
-                System.out.printf("|      Total       |         %-10s    |\n",m);
-                System.out.println("+------------------+-----------------------+");
-                System.out.printf("|     Average      |         %-10s    |\n",m/6);
-                System.out.println("+------------------+-----------------------+");
-                //System.out.println(i);
+           
             input.close();
 
         }
@@ -122,8 +107,9 @@ public class JobCreatedEnded_graph extends Application {
         }
         System.out.println("\n");
         String[] index=new String[50000], date = new String[50000], detail = new String[50000], det = new String[50000];
-        int i=0, m =0;
+        
         try{
+            int i=0;
             Scanner input = new Scanner(new FileInputStream("C:\\Users\\hp\\Downloads\\extracted_log"));
             
             while(input.hasNextLine()){
@@ -133,18 +119,19 @@ public class JobCreatedEnded_graph extends Application {
                     detail[i] = temp[1];
              
                 if(detail[i].equals("_job_complete:")){
-                    det[m] = temp[3];
-                    if(det[m].equals("done")){
-                    index[m] = str;
+                    det[n] = temp[3];
+                    if(det[n].equals("done")){
+                    index[n] = str;
                     String[] b = temp[0].replaceAll("[\\[\\]]", "").split("-");
-                    date[m] = b[1];
+                    date[n] = b[1];
+                        //System.out.println(m+". "+index[m] + "  " + date[m]);
                     
-                  m++;
+                  n++;
                     }
                 }
                 i++;
             }
-             for(int j=0; j<m; j++){
+             for(int j=0; j<n; j++){
                 switch(date[j]){
                     case "06" -> June ++;
                     case "07" -> July++;
@@ -155,22 +142,22 @@ public class JobCreatedEnded_graph extends Application {
                     case "12" -> Dec++;
                 }
             }
-            System.out.println("    No. of jobs Completed per month: ");
-                System.out.println("+------------------+-----------------------+");
-                System.out.println("|      Month       |      No. of Jobs      |");
-                System.out.println("+------------------+-----------------------+");
-                System.out.printf("|       June       |         %-10s    |\n",June);
-                System.out.printf("|       July       |         %-10s    |\n",July);
-                System.out.printf("|      August      |         %-10s    |\n",Aug);
-                System.out.printf("|     September    |         %-10s    |\n",Sept);
-                System.out.printf("|      October     |         %-10s    |\n",Oct);
-                System.out.printf("|     November     |         %-10s    |\n",Nov);
-                System.out.printf("|     December     |         %-10s    |\n",Dec);
-                System.out.println("+------------------+-----------------------+");
-                System.out.printf("|      Total       |         %-10s    |\n",m);
-                System.out.println("+------------------+-----------------------+");
-                System.out.printf("|     Average      |         %-10s    |\n",m/6);
-                System.out.println("+------------------+-----------------------+");
+            System.out.println("    No. of jobs Created/Completed per month: ");
+                System.out.println("+------------------+-----------------------+-----------------------+");
+                System.out.println("|      Month       |      Jobs Created     |     Jobs Completed    |");
+                System.out.println("+------------------+-----------------------+-----------------------+");
+                System.out.printf("|       June       |         %-10s    |         %-10s    |\n",JuneStart,June);
+                System.out.printf("|       July       |         %-10s    |         %-10s    |\n",JulyStart,July);
+                System.out.printf("|      August      |         %-10s    |         %-10s    |\n",AugStart,Aug);
+                System.out.printf("|     September    |         %-10s    |         %-10s    |\n",SeptStart,Sept);
+                System.out.printf("|      October     |         %-10s    |         %-10s    |\n",OctStart,Oct);
+                System.out.printf("|     November     |         %-10s    |         %-10s    |\n",NovStart,Nov);
+                System.out.printf("|     December     |         %-10s    |         %-10s    |\n",DecStart,Dec);
+                System.out.println("+------------------+-----------------------+-----------------------+");
+                System.out.printf("|      Total       |         %-10s    |         %-10s    |\n",m,n);
+                System.out.println("+------------------+-----------------------+-----------------------+");
+                System.out.printf("|     Average      |         %-10s    |         %-10s    |\n",m/6,n/6);
+                System.out.println("+------------------+-----------------------+-----------------------+");
             
             input.close();
 
